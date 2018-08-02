@@ -1,0 +1,23 @@
+{
+  "name": "pixi",
+  "version": "1.0.0",
+  "description": "Pixi project samples",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pxai/pixi.git"
+  },
+  "keywords": [
+    "Pixi",
+    "samples"
+  ],
+  "author": "Pello Altadill",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pxai/pixi/issues"
+  },
+  "homepage": "https://github.com/pxai/pixi#readme"
+}

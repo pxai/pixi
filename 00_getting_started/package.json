@@ -13,5 +13,8 @@
     "gulp": "^3.9.1",
     "gulp-connect": "^5.5.0",
     "vinyl-source-stream": "^2.0.0"
+  },
+  "dependencies": {
+    "pixi.js": "^5.0.0-alpha.3"
   }
 }

@@ -32,7 +32,7 @@ gulp.task("html", function () {
 
 gulp.task("watch", function () {
     gulp.watch(["./src/html/**/*.html"], ["html"]);
-    gulp.watch(["./src/**/*.{js}"], ["bundle"]);
+    gulp.watch(["./src/**/*.js"], ["bundle"]);
 });
 
 gulp.task("default", [ "html", "bundle", "server", "watch" ]);

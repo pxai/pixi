@@ -19,5 +19,15 @@
   "bugs": {
     "url": "https://github.com/pxai/pixi/issues"
   },
-  "homepage": "https://github.com/pxai/pixi#readme"
+  "homepage": "https://github.com/pxai/pixi#readme",
+  "devDependencies": {
+    "browserify": "^16.2.2",
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-connect": "^5.5.0",
+    "vinyl-source-stream": "^2.0.0"
+  },
+  "dependencies": {
+    "pixi.js": "^5.0.0-alpha.3"
+  }
 }

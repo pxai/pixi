@@ -8,7 +8,7 @@ gulp.task("bundle", async function () {
         .add("src/index.js")
         .bundle()
         .on("error", function(err){
-            console.log(err.message);
+            console.log(err.message); // eslint-disable-line no-console
         })
         .pipe(source("index.js"))
         .pipe(gulp.dest("./static/"))

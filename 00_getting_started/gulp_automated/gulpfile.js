@@ -1,7 +1,12 @@
 const gulp = require("gulp");
+const del = require("del");
 const connect = require("gulp-connect");
 const browserify = require("browserify");
 const source = require("vinyl-source-stream");
+
+gulp.task('clean', function(){
+     return del('static/**/*', {force:true});
+});
 
 gulp.task("bundle", async function () {
     browserify({ debug: true })
@@ -17,6 +22,7 @@ gulp.task("bundle", async function () {
 });
 
 gulp.task("server", function() {
+    connect.serverClose();
     connect.server({
         root: "static",
         livereload: true,
@@ -25,14 +31,20 @@ gulp.task("server", function() {
 });
 
 gulp.task("html", function () {
-    gulp.src("./resources/html/index.html")
+    gulp.src("./src/assets/html/index.html")
         .pipe(gulp.dest("./static/"))
+        .pipe(connect.reload());
+});
+
+gulp.task("assets", function () {
+    gulp.src(["./src/assets/**/*","!./src/assets/html","!./src/assets/html/index.html"])
+        .pipe(gulp.dest("./static/assets"))
         .pipe(connect.reload());
 });
 
 gulp.task("watch", function () {
     gulp.watch(["./src/html/**/*.html"], ["html"]);
-    gulp.watch(["./src/**/*.js"], ["bundle"]);
+    gulp.watch(["./src/**/*.js","gulpfile.js"], ["default"]);
 });
 
-gulp.task("default", [ "html", "bundle", "server", "watch" ]);
+gulp.task("default", [ "clean", "html", "assets", "bundle", "server", "watch" ]);

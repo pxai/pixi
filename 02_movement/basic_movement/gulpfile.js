@@ -43,7 +43,7 @@ gulp.task("assets", function () {
 });
 
 gulp.task("watch", function () {
-    gulp.watch(["./src/html/**/*.html"], ["html"]);
+    gulp.watch(["./src/html/**/*.html"], ["clean","html"]);
     gulp.watch(["./src/**/*.js","gulpfile.js"], ["default"]);
 });
 

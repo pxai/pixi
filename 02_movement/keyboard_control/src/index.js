@@ -1,6 +1,6 @@
 const PIXI = require("pixi.js");
 
-var app = new PIXI.Application(400, 300, {backgroundColor : 0x1099bb});
+var app = new PIXI.Application(800, 600, {backgroundColor : 0x1099bb});
 document.body.appendChild(app.view);
 
 // create a new Sprite from an image path
@@ -32,7 +32,97 @@ function init() {
 }
 
 function right() {
- logo.x += logo.vx;
+// logo.x += logo.vx;
 }
 
 gameLoop();
+
+
+function setup() {
+
+    //Create the `logo` sprite
+    logo = new Sprite(resources["images/logo96x48.png"].texture);
+
+    //Center the sprite
+    logo.x = renderer.view.width / 2 - logo.width / 2;
+    logo.y = renderer.view.height / 2 - logo.height / 2;
+
+    //Initialize the sprites's velocity variables
+    logo.vx = 0;
+    logo.vy = 0;
+
+    //Add the sprite to the stage
+    stage.addChild(logo);
+
+    //Capture the keyboard arrow keys
+    var left = keyboard(37),
+    up = keyboard(38),
+    right = keyboard(39),
+    down = keyboard(40);
+
+    //Left arrow key `press` method
+    left.press = () => {
+        //Change the sprite's velocity when the key is pressed
+        logo.vx = -5;
+        logo.vy = 0;
+    };
+
+//Left arrow key `release` method
+    left.release = () => {
+
+    //If the left arrow has been released, and the right arrow isn't down,
+    //and the logo isn't moving vertically, stop the sprite from moving
+    //by setting its velocity to zero
+        if (!right.isDown && logo.vy === 0) {
+            logo.vx = 0;
+        }
+    };
+
+    //Up
+    up.press = () => {
+        logo.vy = -5;
+        logo.vx = 0;
+    };
+
+    up.release = () => {
+        if (!down.isDown && logo.vx === 0) {
+        logo.vy = 0;
+        }
+    };
+
+    //Right
+    right.press = () => {
+        logo.vx = 5;
+        logo.vy = 0;
+    };
+
+    right.release = () => {
+        if (!left.isDown && logo.vy === 0) {
+            logo.vx = 0;
+        }
+    };
+
+    //Down
+    down.press = () => {
+        logo.vy = 5;
+        logo.vx = 0;
+    };
+
+    down.release = () => {
+        if (!up.isDown && logo.vx === 0) {
+            logo.vy = 0;
+        }
+    };
+
+    //Set the game's current state to `play`
+    state = play;
+
+    //Start the game loop
+    gameLoop();
+}
+
+function play() {
+    //Apply the velocity values to the sprite's position to make it move
+    logo.x += logo.vx;
+    logo.y += logo.vy;
+}

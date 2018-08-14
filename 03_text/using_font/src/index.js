@@ -3,24 +3,31 @@ const PIXI = require("pixi.js");
 var app = new PIXI.Application(400, 300, {backgroundColor : 0x1099bb});
 document.body.appendChild(app.view);
 
-// create a new Sprite from an image path
-const logo = PIXI.Sprite.from("assets/images/pixilogo.png");
+var basicText = new PIXI.Text('Basic text in pixi');
+basicText.x = 30;
+basicText.y = 90;
 
-// center the sprite's anchor point
-logo.anchor.set(0.5);
+app.stage.addChild(basicText);
 
-// move the sprite to the center of the screen
-logo.x = app.screen.width / 2;
-logo.y = app.screen.height / 2;
+var style = new PIXI.TextStyle({
+    fontFamily: 'Arial',
+    fontSize: 36,
+    fontStyle: 'italic',
+    fontWeight: 'bold',
+    fill: ['#ffffff', '#00ff99'], // gradient
+    stroke: '#4a1850',
+    strokeThickness: 5,
+    dropShadow: true,
+    dropShadowColor: '#000000',
+    dropShadowBlur: 4,
+    dropShadowAngle: Math.PI / 6,
+    dropShadowDistance: 6,
+    wordWrap: true,
+    wordWrapWidth: 440
+});
 
-app.stage.addChild(logo);
-    console.log(logo);
+var richText = new PIXI.Text('Rich text with a lot of options and across multiple lines', style);
+richText.x = 30;
+richText.y = 180;
 
-function gameLoop(){
-   //Loop this function 60 times per second
-   requestAnimationFrame(gameLoop);
-   logo.x += 1;
-   app.renderer.render(app.stage);
-}
-
-gameLoop();
+app.stage.addChild(richText);

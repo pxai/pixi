@@ -1,13 +1,8 @@
 const PIXI = require("pixi.js");
 
-var app = new PIXI.Application(400, 300, {backgroundColor : 0x1099bb});
+var app = new PIXI.Application(600, 400, {backgroundColor : 0x1099bb});
 document.body.appendChild(app.view);
 
-var basicText = new PIXI.Text('Basic text in pixi');
-basicText.x = 30;
-basicText.y = 90;
-
-app.stage.addChild(basicText);
 
 var style = new PIXI.TextStyle({
     fontFamily: 'Arial',
@@ -26,8 +21,8 @@ var style = new PIXI.TextStyle({
     wordWrapWidth: 440
 });
 
-var richText = new PIXI.Text('Rich text with a lot of options and across multiple lines', style);
-richText.x = 30;
-richText.y = 180;
+var richText = new PIXI.Text('Pixi rich text sample', style);
+richText.x = 5;
+richText.y = 5;
 
 app.stage.addChild(richText);

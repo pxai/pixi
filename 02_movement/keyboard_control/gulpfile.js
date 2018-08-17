@@ -22,7 +22,6 @@ gulp.task("bundle", async function () {
 });
 
 gulp.task("server", function() {
-    connect.serverClose();
     connect.server({
         root: "static",
         livereload: true,
@@ -43,8 +42,7 @@ gulp.task("assets", function () {
 });
 
 gulp.task("watch", function () {
-    gulp.watch(["./src/html/**/*.html"], ["clean","html"]);
-    gulp.watch(["./src/**/*.js","gulpfile.js"], ["default"]);
+    gulp.watch(["./src/html/**/*.html","./src/**/*.js","gulpfile.js"], ["clean", "html", "assets", "bundle"]);
 });
 
 gulp.task("default", [ "clean", "html", "assets", "bundle", "server", "watch" ]);

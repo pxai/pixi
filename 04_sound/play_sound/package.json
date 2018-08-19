@@ -1,0 +1,21 @@
+{
+  "name": "play_sound",
+  "version": "1.0.0",
+  "description": "04 Playing sounds",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+      "browserify": "^16.2.2",
+      "del": "^3.0.0",
+      "gulp": "^3.9.1",
+      "gulp-connect": "^5.5.0",
+      "vinyl-source-stream": "^2.0.0"
+  },
+  "dependencies": {
+    "pixi.js": "^5.0.0-alpha.3"
+  }
+}

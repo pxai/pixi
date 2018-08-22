@@ -9,3 +9,21 @@ basicText.x = app.screen.width / 4;
 basicText.y = app.screen.height / 3;
 
 app.stage.addChild(basicText);
+
+// Opt-in to interactivity
+basicText.interactive = true;
+
+// Shows hand cursor
+basicText.buttonMode = true;
+
+// Pointers normalize touch and mouse
+basicText.on('pointerdown', onClick);
+
+// Alternatively, use the mouse & touch events:
+// sprite.on('click', onClick); // mouse-only
+// sprite.on('tap', onClick); // touch-only
+
+function onClick () {
+    basicText.scale.x *= 1.25;
+    basicText.scale.y *= 1.25;
+}

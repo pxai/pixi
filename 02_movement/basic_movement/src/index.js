@@ -18,9 +18,9 @@ app.stage.addChild(logo);
 
 function gameLoop(){
    //Loop this function 60 times per second
-   requestAnimationFrame(gameLoop);
+//   requestAnimationFrame(gameLoop);
    logo.x += 1;
-   app.renderer.render(app.stage);
+ //  app.renderer.render(app.stage);
 }
 
 gameLoop();

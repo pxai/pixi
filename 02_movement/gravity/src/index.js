@@ -16,6 +16,12 @@ logo.y = app.screen.height / 2;
 app.stage.addChild(logo);
     console.log(logo);
 
+logo.vx = 0.1;
+logo.vy = 0.1;
+logo.accelerationX = 0;
+logo.accelerationY = 0.98;
+logo.frictionX = logo.frictionY = 0.1;
+
 // Acceleation and friction
 logo.vx = logo.vx + logo.accelerationX;
 logo.vy = logo.vy + logo.accelerationY;
@@ -27,9 +33,9 @@ logo.vy = logo.vy + 0.1;
 
 function gameLoop(){
    //Loop this function 60 times per second
-   requestAnimationFrame(gameLoop);
-   logo.x = logo.x + logo.vx;
-   logo.y = logo.y + logo.vy;
+  requestAnimationFrame(gameLoop);
+  logo.x = logo.x + logo.vx;
+  logo.y = logo.y + logo.vy;
    app.renderer.render(app.stage);
 }
 

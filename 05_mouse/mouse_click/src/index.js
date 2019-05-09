@@ -23,7 +23,8 @@ basicText.on('pointerdown', onClick);
 // sprite.on('click', onClick); // mouse-only
 // sprite.on('tap', onClick); // touch-only
 
-function onClick () {
+function onClick (event) {
+    console.log("clicked ", event);
     basicText.scale.x *= 1.25;
     basicText.scale.y *= 1.25;
 }

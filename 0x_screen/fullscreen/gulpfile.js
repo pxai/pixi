@@ -36,7 +36,7 @@ gulp.task("html", function () {
 });
 
 gulp.task("assets", function () {
-    gulp.src(["./src/assets/**/*","!./src/assets/html","!./src/assets/html/index.html"])
+    gulp.src(["./src/assets/**/*","!./src/assets/html"])
         .pipe(gulp.dest("./static/assets"))
         .pipe(connect.reload());
 });

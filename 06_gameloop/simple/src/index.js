@@ -1,29 +1,43 @@
 const PIXI = require("pixi.js");
+const gameCanvas = document.getElementById("game");
 
-var app = new PIXI.Application(400, 300, {backgroundColor : 0x00dead});
-document.body.appendChild(app.view);
+let width = window.innerWidth;
+let height = window.innerHeight;
 
-var basicText = new PIXI.Text('Hello Pixi, game loo');
+const renderer = new PIXI.Renderer({
+    view: gameCanvas,
+    width,
+    height,
+    backgroundColor : 0,
+    resolution: window.devicePixelRatio, // for mobile
+    autoDensity: true
+});
 
-basicText.x = app.screen.width / 4;
-basicText.y = app.screen.height / 3;
+window.addEventListener("resize", resize);
+function resize () {
+    width = window.innerWidht;
+    height = window.innerHeight;
 
-app.stage.addChild(basicText);
+    renderer.resize(width, height);
+}
 
-// Opt-in to interactivity
-basicText.interactive = true;
+const stage = new PIXI.Container();
 
-// Shows hand cursor
-basicText.buttonMode = true;
+var basicText = new PIXI.Text('Hello Pixi fullscreen');
 
-// Pointers normalize touch and mouse
-basicText.on('pointerdown', onClick);
 
-// Alternatively, use the mouse & touch events:
-// sprite.on('click', onClick); // mouse-only
-// sprite.on('tap', onClick); // touch-only
+basicText.anchor.x = 0.5;
+basicText.anchor.y = 0.5;
+basicText.style.fill = "red";
+stage.addChild(basicText);
 
-function onClick () {
-    basicText.scale.x *= 1.25;
-    basicText.scale.y *= 1.25;
+const ticker = new PIXI.Ticker();
+ticker.add(animation);
+ticker.start(); // it starts on its own.
+
+function animation () {
+    basicText.x = renderer.screen.width / 2;
+    basicText.y = renderer.screen.height / 2;
+    basicText.rotation += 0.1;
+    renderer.render(stage);
 }

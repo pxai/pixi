@@ -37,7 +37,7 @@ gulp.task("html", function () {
 
 gulp.task("assets", function () {
     gulp.src(["./src/assets/**/*","!./src/assets/html"])
-        .pipe(gulp.dest("./static/assets"))
+        .pipe(gulp.dest("./static/assets", {force:true}))
         .pipe(connect.reload());
 });
 

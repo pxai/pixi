@@ -15,16 +15,15 @@ const renderer = new PIXI.Renderer({
 
 window.addEventListener("resize", resize);
 function resize () {
+    console.log("resize the whole thing");
     width = window.innerWidht;
     height = window.innerHeight;
-
     renderer.resize(width, height);
 }
 
 const stage = new PIXI.Container();
 
 var basicText = new PIXI.Text('Hello Pixi fullscreen');
-
 
 basicText.anchor.x = 0.5;
 basicText.anchor.y = 0.5;
@@ -33,7 +32,7 @@ stage.addChild(basicText);
 
 const ticker = new PIXI.Ticker();
 ticker.add(animation);
-ticker.start(); // it starts on its own.
+ticker.start();
 
 function animation () {
     basicText.x = renderer.screen.width / 2;

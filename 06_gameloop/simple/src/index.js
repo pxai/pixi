@@ -15,10 +15,10 @@ const renderer = new PIXI.Renderer({
 
 window.addEventListener("resize", resize);
 function resize () {
-    console.log("resize the whole thing");
-    width = window.innerWidht;
+    width = window.innerWidth;
     height = window.innerHeight;
     renderer.resize(width, height);
+    console.log("resize the whole thing :", width, height);
 }
 
 const stage = new PIXI.Container();

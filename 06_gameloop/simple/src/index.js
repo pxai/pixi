@@ -27,7 +27,7 @@ var basicText = new PIXI.Text('Hello Pixi fullscreen');
 
 basicText.anchor.x = 0.5;
 basicText.anchor.y = 0.5;
-basicText.style.fill = "red";
+basicText.style.fill = "yellow";
 stage.addChild(basicText);
 
 const ticker = new PIXI.Ticker();

@@ -1,8 +1,19 @@
+const os = require('os');
 const gulp = require("gulp");
 const del = require("del");
 const connect = require("gulp-connect");
 const browserify = require("browserify");
 const source = require("vinyl-source-stream");
+const open = require('gulp-open'); 
+
+const browser = os.platform() === 'linux' ? 'chromium' : (
+    os.platform() === 'darwin' ? 'google chrome' : (
+    os.platform() === 'win32' ? 'chrome' : 'firefox'));
+
+gulp.task('open', function(){
+    gulp.src("/")
+    .pipe(open({uri: "http://localhost:3000"}));
+});
 
 gulp.task('clean', function(){
      return del('static/**/*', {force:true});
@@ -37,7 +48,7 @@ gulp.task("html", function () {
 
 gulp.task("assets", function () {
     gulp.src(["./src/assets/**/*","!./src/assets/html"])
-        .pipe(gulp.dest("./static/assets"))
+        .pipe(gulp.dest("./static/assets", {force:true}))
         .pipe(connect.reload());
 });
 
@@ -45,4 +56,4 @@ gulp.task("watch", function () {
     gulp.watch(["./src/html/**/*.html","./src/**/*.js","gulpfile.js"], ["clean", "html", "assets", "bundle"]);
 });
 
-gulp.task("default", [ "clean", "html", "assets", "bundle", "server", "watch" ]);
+gulp.task("default", [ "clean", "html", "assets", "bundle", "open", "server", "watch" ]);

@@ -1,0 +1,23 @@
+{
+  "name": "06_gameloop",
+  "version": "1.0.0",
+  "description": "06 renderer",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "gulp"
+  },
+  "author": "Pello Altadill",
+  "license": "ISC",
+  "devDependencies": {
+    "browserify": "^16.2.2",
+    "del": "^3.0.0",
+    "gulp": "^4.0.2",
+    "gulp-connect": "^5.5.0",
+    "gulp-open": "^3.0.1",
+    "vinyl-source-stream": "^2.0.0"
+  },
+  "dependencies": {
+    "pixi.js": "^5.1.1"
+  }
+}
